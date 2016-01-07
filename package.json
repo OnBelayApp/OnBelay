@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/hrr11-audi/chevynova/issues"
   },
-  "homepage": "https://github.com/hrr11-audi/chevynova#readme"
+  "homepage": "https://github.com/hrr11-audi/chevynova#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "jsonwebtoken": "^5.5.4",
+    "mongoose": "^4.3.4"
+  },
+  "devDependencies": {
+    "morgan": "^1.6.1"
+  }
 }
