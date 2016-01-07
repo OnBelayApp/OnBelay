@@ -4,11 +4,11 @@ var mongoose = require('mongoose'),
 
 var userSchema = mongoose.Schema({
   username: String,
+  password: String,
   name: {
     first: String,
     last: String
   },
-  password: String,
   zipCode: Number,
   skillLevel: String,
   gender: String,
