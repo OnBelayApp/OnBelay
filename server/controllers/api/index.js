@@ -4,3 +4,6 @@ var express = require('express'),
 var apiRouter = express.Router();
 
 apiRouter.post('/signin', auth.authenticate);
+
+/* User routes */
+apiRouter.put('/auth/user/update')
