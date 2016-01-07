@@ -26,7 +26,7 @@ angular.module('nova.services', [])
 //     addLink: addLink
 //   };
 //   })
-.factory('Auth', function ($http, $location, $window) {
+.factory('Auth', function ($http, $state, $window) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user
   // by exchanging the user's username and password
@@ -62,7 +62,7 @@ angular.module('nova.services', [])
 
   var signout = function () {
     $window.localStorage.removeItem('com.nova');
-    $location.path('/signin');
+    $state.go('/signin');
   };
 
 
