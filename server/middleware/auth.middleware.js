@@ -1,4 +1,5 @@
-var jwt = require('jsonwebtoken');
+var jwt = require('jsonwebtoken'),
+    credentials = require('../config/secrets');
 
 module.exports = function(req, res, next) {
   var token = req.headers['x-access-token'];
