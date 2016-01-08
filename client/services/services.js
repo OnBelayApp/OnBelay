@@ -17,13 +17,19 @@ angular.module('nova.services', [])
 })
 
 
-.factory('Main', function($http){
+.factory('Climbers', function($http){
 
-  var getProfiles = function(){};
-
+  var getClimbers = function(){
+    return $http({
+      method: 'GET',
+      url: "/auth/user/climbers",
+    }).then(function(res){
+      return res;
+    });
+  };
 
   return {
-    getProfiles: getProfiles
+    getClimbers: getClimbers
   };
 
 })
