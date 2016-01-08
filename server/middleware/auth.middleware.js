@@ -7,14 +7,13 @@ module.exports = function(req, res, next) {
    if (!token) {
      return res.send(403);
    }
-   // TODO: add decoded token to req
-   jwt.verify(token, credentials.authentication.tokenSecret, function(err, decoded) {
-     if (err) {
-       console.log(err);
-       return res.send(403);
-     }
-     req.decoded = decoded;
-     next();
-   });
 
+  jwt.verify(token, credentials.authentication.tokenSecret, function(err, decoded) {
+    if (err) {
+      console.log(err);
+      return res.status(403).json({ success: false, reason: 'Invalid token' });
+    }
+    req.decoded = decoded;
+    next();
+  });
 };

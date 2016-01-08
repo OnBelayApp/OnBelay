@@ -1,6 +1,6 @@
 var User = require('../../models').User;
 
-function updateProfile(req, res) {
+exports.updateProfile = function(req, res) {
   var authUser = req.decoded.user;
   //find User
   User.findOne({ username: authUser }, function(err, user) {
@@ -22,7 +22,3 @@ function updateProfile(req, res) {
     }
   });
 }
-
-module.exports = {
-  updateProfile: updateProfile
-};
