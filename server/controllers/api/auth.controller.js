@@ -1,5 +1,6 @@
 var User = require('../models'),
-    jwt = require('jsonwebtoken');
+    jwt = require('jsonwebtoken'),
+    credentials = require('../../config/secrets.js');
 
 var createToken = function(user) {
  return jwt.sign({ user: user.username }, credentials.authentication.tokenSecret, {
@@ -8,7 +9,7 @@ var createToken = function(user) {
 };
 
 module.exports = {
-  authenticate: function(req, res) {
+  signIn: function(req, res) {
     // look for user in database
     User.findOne({'username': req.body.username}, function(err, person) {
       if (person) {
