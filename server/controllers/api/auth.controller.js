@@ -1,5 +1,6 @@
-var User = require('../models'),
-    jwt = require('jsonwebtoken');
+var User = require('../../models').User,
+    jwt = require('jsonwebtoken'),
+    credentials = require('../../config/secrets');
 
 var createToken = function(user) {
  return jwt.sign({ user: user.username }, credentials.authentication.tokenSecret, {
@@ -8,13 +9,13 @@ var createToken = function(user) {
 };
 
 module.exports = {
-  authenticate: function(req, res) {
+  signIn: function(req, res) {
     // look for user in database
-    User.findOne({'username': req.body.username}, function(err, person) {
-      if (person) {
-        User.comparePassword(req.body.password, person.password, function(valid) {
+    User.findOne({'username': req.body.username}, function(err, user) {
+      if (user) {
+        user.comparePassword(req.body.password, user.password, function(valid) {
           if (valid) {
-            var userToken = createToken(person);
+            var userToken = createToken(user);
             res.json({'success': true, 'token': userToken});
           } else {
             res.json({'success': false, 'reason': 'Password incorrect'});
@@ -27,7 +28,7 @@ module.exports = {
   },
   signUp: function(req, res) {
 
-    User.findOne({ req.body.username }, function(err, user) {
+    User.findOne({ username: req.body.username }, function(err, user) {
       if (err) console.error(err);
 
       if (user) {
@@ -48,8 +49,8 @@ module.exports = {
 
             var token = createToken(user);
             res.json({ success: true, token: token });
-          })
-        })
+          });
+        });
       }
     });
   }
