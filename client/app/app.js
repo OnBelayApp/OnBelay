@@ -1,13 +1,12 @@
 angular.module('nova', [
   'nova.auth',
-  'nova.main',
   'nova.services',
-  'ui.router'
+  'ui.router',
+  'nova.main'
 ])
 
-.config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider, $httpProvider){
  // $urlRouterProvider.otherwise("/signin");
- 
   $stateProvider
     .state('main', {
       url: "/main",
@@ -26,9 +25,41 @@ angular.module('nova', [
     })
     .state('update', {
       url: "/update",
-      templateUrl: "app/auth/update.html",
-      controller: "AuthController"
+      templateUrl: "TODO/update.html",
+      controller: "TODO"
     })
- 
+    .state('logout', {
+      url: "/logout",
+      controller: function($scope, Auth){
+        Auth.signout();
+      }
+    });
 
+    $httpProvider.interceptors.push('AttachTokens');
 })
+
+.factory('AttachTokens', function($window){
+  var attach = {
+    request: function(object) {
+      var jwt = $window.localStorage.getItem('com.nova');
+      if (jwt) {
+        object.headers['x-access-token'] = jwt;
+      }
+      object.headers['Allow-Control-Allow-Origin'] = '*';
+      return object;
+    }
+  };
+  return attach;
+})
+
+.run(function($rootScope, $state, Auth) {
+  $rootScope.$on('$stateChangeStart', function(evt, toState, toParams, fromState, fromParams){
+    if (toState.name === 'signin') {
+      return;
+    }
+    if (!Auth.isAuth() && toState.name !== 'signup'){
+      evt.preventDefault();
+      $state.go('signin');
+    }
+  });
+});
