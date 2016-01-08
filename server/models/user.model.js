@@ -12,6 +12,7 @@ var userSchema = mongoose.Schema({
   zipCode: Number,
   skillLevel: String,
   gender: String,
+  climb: Boolean,
   createdAt: Date,
   updatedAt: Date
 });
