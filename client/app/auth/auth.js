@@ -6,7 +6,7 @@ angular.module('nova.auth', [])
   $scope.signin = function () {
     Auth.signin($scope.user)
       .then(function (token) {
-        // $window.localStorage.setItem('com.nova', token);
+        $window.localStorage.setItem('com.nova', token);
         $state.go('main');
       })
       .catch(function (error) {
@@ -17,7 +17,7 @@ angular.module('nova.auth', [])
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (token) {
-        // $window.localStorage.setItem('com.nova', token);
+        $window.localStorage.setItem('com.nova', token);
         $state.go('main');
       })
       .catch(function (error) {
@@ -34,6 +34,5 @@ angular.module('nova.auth', [])
         console.error(error);
       });
   };
-
-
 });
+
