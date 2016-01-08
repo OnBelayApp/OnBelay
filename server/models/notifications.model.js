@@ -4,8 +4,8 @@ var mongoose = require('mongoose'),
 var notificationSchema = mongoose.Schema({
   sender: { type: ObjectId, ref: 'User' },
   recipient: { type: ObjectId, ref: 'User' },
-  read: { type: Boolean, default: false },
-  resolved: { type: Boolean, default: false },
+  isRead: { type: Boolean, default: false },
+  isResolved: { type: Boolean, default: false },
   createdAt: Date,
   updatedAt: Date
 });
@@ -19,12 +19,12 @@ notificationSchema.pre('save', function(next) {
   next();
 });
 
-notificationSchema.methods.resolve = function() {
-  this.resolved = true;
+notificationSchema.methods.resolve = function(notification) {
+  notification.isResolved = true;
 };
 
-notificationSchema.methods.read = function() {
-  this.read = true;
+notificationSchema.methods.resolve = function(notification) {
+  notification.isRead = true;
 };
 
 var Notification = mongoose.model('Notification', notificationSchema);
