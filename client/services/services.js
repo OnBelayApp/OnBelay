@@ -8,7 +8,6 @@ angular.module('nova.services', [])
     }).catch(function(err){
       console.error(err);
     })
-
    };
 
   var signup = function(user){
@@ -17,15 +16,13 @@ angular.module('nova.services', [])
     }).catch(function(err){
       console.error(err);
     })
-
   };
 
 
+  var signout = function(){
+    
+  };
 
-
-
-
-  var signout = function(){};
 
   return {
       signin: signin,
