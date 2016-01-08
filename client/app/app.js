@@ -1,17 +1,18 @@
 angular.module('nova', [
   'nova.auth',
-  'nova.services',
+  // 'nova.services',
+//add 'ui.router' as a dependency
   'ui.router'
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
-  $urlRouterProvider.otherwise("/signin");
+ // $urlRouterProvider.otherwise("/signin");
   $stateProvider
-    // .state('main', {
-    //   url: "/main",
-    //   templateUrl: "app/main/main.html",
-    //   controller: "MainController"
-    // })
+    .state('main', {
+      url: "/main",
+      templateUrl: "app/main/main.html",
+      controller: "MainController"
+    })
     .state('signin', {
       url: "/signin",
       templateUrl: "app/auth/signin.html",
@@ -21,6 +22,11 @@ angular.module('nova', [
       url: "/signup",
       templateUrl: "app/auth/signup.html",
       controller: "AuthController"
+    })
+    .state('update', {
+      url: "/update",
+      templateUrl: "TODO/update.html",
+      controller: "TODO"
     });
 
     // $httpProvider.interceptors.push('AttachTokens');
