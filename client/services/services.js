@@ -19,7 +19,11 @@ angular.module('nova.services', [])
   };
 
   var update = function(){
-    
+    return $http.post('/api/auth/user/update', user).then(function(response){
+      return response.data.token;
+    }).catch(function(err){
+      console.error(err);
+    })
   };
 
   var signout = function(){
