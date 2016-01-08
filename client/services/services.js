@@ -51,4 +51,4 @@ angular.module('nova.services', [])
     getClimbers: getClimbers
   };
 
-})
+});

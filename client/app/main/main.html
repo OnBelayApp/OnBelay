@@ -1,1 +1,17 @@
-main.html placeholder
+<div id="container">
+  <button>Climb</button>
+  <ul>
+    <li class='climbers' ng-repeat="climber in activeClimbers">
+      <div>
+        {{climber.name.first}} {{climber.name.last}}
+      </div>
+      <div>
+        {{climber.skillLevel}}
+      </div>
+      <div>
+        {{climber.gender}}
+      </div>
+      <button class='climbOnBtn'>Climb On</button>
+    </li>
+  </ul>
+</div>
