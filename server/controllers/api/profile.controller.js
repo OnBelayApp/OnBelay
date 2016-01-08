@@ -1,9 +1,9 @@
 var User = require('../../models').User;
 
 function updateProfile(req, res) {
-
+  var authUser = req.decoded.user;
   //find User
-  User.findOne({ username: req.body.username }, function(err, user) {
+  User.findOne({ username: authUser }, function(err, user) {
     if (err) console.error(err);
 
     if (!user) {
