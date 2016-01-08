@@ -9,8 +9,10 @@ var apiRouter = express.Router();
 apiRouter.post('/signin', auth.signIn);
 apiRouter.post('/signup', auth.signUp);
 
-/* User routes */
+/* Token middleware */
 apiRouter.use('/auth', token.authenticate);
+
+/* Auth routes */
 apiRouter.put('/auth/user/update', profile.updateProfile);
 
 module.exports = apiRouter;
