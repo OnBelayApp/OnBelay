@@ -24,6 +24,7 @@ angular.module('nova.auth', [])
         console.error(error);
       });
   };
+
   $scope.update = function(){
     Auth.update($scope.user)
     .then(function (token) {
@@ -33,4 +34,6 @@ angular.module('nova.auth', [])
         console.error(error);
       });
   };
+
+
 });
