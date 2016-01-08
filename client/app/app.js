@@ -26,8 +26,8 @@ angular.module('nova', [
     })
     .state('update', {
       url: "/update",
-      templateUrl: "TODO/update.html",
-      // controller: "TODO"
+      templateUrl: "app/auth/update.html",
+      controller: "AuthController"
     })
  
 

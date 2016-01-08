@@ -1,0 +1,35 @@
+<div id='update'>
+  <h1>update</h1>
+
+
+  <form name="update-form" ng-submit='update()'>
+   <div class="form-group">
+     <label for="name">Name</label>
+     <input type='text' id="name" class="form-control" ng-model='user.name' placeholder="Name"><br>
+     <label for="zip-code">ZIP</label>
+     <input type="number" id="zip-code" class="form-control" ng-model='user.zip' placeholder="ZIP"> <br>
+
+     
+     
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="male" value="male"> Male
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="femail" value="female"> Female
+      </label>
+
+      <br><br>
+
+
+     <label for="skill-level">Skill Level</label>
+     <select class="form-control" id="skill-level">
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Expert">Expert</option>
+    </select><br>
+     <button type="submit" class="btn btn-default">update</button>
+   </div>
+  </form>
+</div>
+
+

@@ -1,10 +1,13 @@
 <div id='signin'>
   <h1>signin</h1>
-  <form name="signinForm" ng-submit='signin()'>
-
-     Username: <input type='text'ng-model='user.username'>
-     Password: <input type="password" ng-model='user.password'>
-    <button>signin</button>
+  <form name="signin-form" ng-submit='signin()'>
+    <div class="form-group">
+      <!-- <label for="email-address">Username</label> -->
+      <input type='text' class="form-control" id="username" ng-model='user.username' placeholder="Username">
+      <!-- <label for="password">Password</label> -->
+      <input type="password" class="form-control" id="password" ng-model='user.password' placeholder="Password">
+      <button type="submit" class="btn btn-default">signin</button>
+    </div>
   </form>
   <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
 </div>
