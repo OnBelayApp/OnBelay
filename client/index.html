@@ -3,21 +3,35 @@
 <html ng-app="nova">
 
 <head>
-<title>N O V A</title>
+<title>OnBelay</title>
 </head>
 
 
 <body>
 
 
-<div ui-view>
-</div>
-
-
-<ul id="nav">
+<!-- old nav -->
+<!-- <ul id="nav">
   <li><a href="#/Main">Main</a></li>
   <li><a href="#/Signin">Signin</a></li>
-</ul>
+  <li><a href="#/Signup">Signup</a></li>
+  <li><a href="#/Update">Update</a></li>
+</ul> -->
+
+
+
+<!-- ui-router nav -->
+<div>
+<a ui-sref="main">Main</a>
+<a ui-sref="signin">Signin</a>
+<a ui-sref="signup">Signup</a>
+<a ui-sref="update">Update</a>
+</div>
+
+<div ui-view></div>
+
+
+
 
 
 
@@ -38,7 +52,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 <script src="app/auth/auth.js"></script>
-<script src="services/services.js"></script>
+<!-- <script src="services/services.js"></script> -->
 <script src="app/app.js"></script>
 
 
