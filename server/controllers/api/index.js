@@ -6,8 +6,8 @@ var express = require('express'),
 
 var apiRouter = express.Router();
 
-apiRouter.post('/signin', auth.authenticate);
-apiRouter.post('/signup', authenticateToken);
+apiRouter.post('/signin', auth.signIn);
+apiRouter.post('/signup', auth.signUp);
 
 /* User routes */
 apiRouter.use('/auth', token.authenticate);
