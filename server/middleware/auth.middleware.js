@@ -5,7 +5,7 @@ module.exports = function(req, res, next) {
   var token = req.headers['x-access-token'];
 
    if (!token) {
-     return res.send(403);
+     return res.status(403).json({ success: false, reason: 'Invalid token' });
    }
 
   jwt.verify(token, credentials.authentication.tokenSecret, function(err, decoded) {

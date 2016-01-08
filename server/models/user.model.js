@@ -13,15 +13,19 @@ var userSchema = mongoose.Schema({
   skillLevel: String,
   gender: String,
   climb: Boolean,
+  notifications: {
+    incoming: [{ type: ObjectId, ref: 'Notification' }],
+    outgoing: [{ type: ObjectId, ref: 'Notification' }]
+  },
   createdAt: Date,
   updatedAt: Date
 });
 
 userSchema.pre('save', function(next) {
   var now = new Date();
-  this.updated_at = now;
-  if (!this.created_at) {
-    this.created_at = now;
+  this.updatedAt = now;
+  if (!this.createdAt) {
+    this.createdAt = now;
   }
   next();
 });
