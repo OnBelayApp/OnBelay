@@ -2,7 +2,10 @@ var mongoose = require('mongoose'),
     ObjectId = mongoose.Schema.Types.ObjectId;
 
 var notificationSchema = mongoose.Schema({
-  sender: { type: ObjectId, ref: 'User' },
+  sender: {
+    id: { type: ObjectId, ref: 'User' },
+    username: String,
+  },
   recipient: { type: ObjectId, ref: 'User' },
   isRead: { type: Boolean, default: false },
   isResolved: { type: Boolean, default: false },

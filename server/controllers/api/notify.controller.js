@@ -1,7 +1,7 @@
 var User = require('../../models').User,
     Notification = require('../../models').Notification;
 
-exports.sendNotification = function(req, res) {
+function sendNotification (req, res) {
   var authUser = req.decoded.user;
   var targetUser = req.body.targetUser;
   var newNotification;
@@ -15,7 +15,10 @@ exports.sendNotification = function(req, res) {
       User.findOne({ username: targetUser }, function(err, target) {
 
         newNotification = new Notification({
-          sender: sender._id,
+          sender: {
+            id: sender.id._id,
+            username: target.username
+          },
           recipient: target._id
         });
 
@@ -36,4 +39,39 @@ exports.sendNotification = function(req, res) {
       });
     }
   });
+};
+
+function getNotifications(req, res) {
+  var authUser = req.decoded.user;
+
+  User.findOne({ username: authUser }, function(err, user) {
+    if (err) console.error(err);
+
+    if (!user) {
+      res.json({ success: false, reason: 'User does not exist' });
+    } else {
+
+      Notification.find({ _id: { $in: user.notifications.incoming }}, function(err, notifications) {
+
+          var respNotifications = notifications.map(function(notification) {
+
+            if (!notification.isResolved) {
+              return {
+                sender: {
+                  username: notification.sender.username
+                },
+                isRead: notification.isRead,
+                createdAt: notification.createdAt
+              };
+            }
+          });
+          res.json(respNotifications);
+      });
+    }
+  });
+}
+
+module.exports = {
+  sendNotification: sendNotification,
+  getNotifications: getNotifications
 };

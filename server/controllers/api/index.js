@@ -19,6 +19,7 @@ apiRouter.use('/auth', token.authenticate);
 apiRouter.put('/auth/user/update', profile.updateProfile);
 apiRouter.get('/auth/user/climbers', user.findActiveClimbers);
 apiRouter.all('/auth/user/flag', flag.climbFlag);
+apiRouter.get('/auth/user/notifications/incoming', notify.getNotifications);
 apiRouter.post('/auth/user/notifications/create', notify.sendNotification);
 
 module.exports = apiRouter;
