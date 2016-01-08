@@ -8,7 +8,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-app.use(express.static(__dirname + '/../../client'));
+app.use(express.static(__dirname + '/../client'));
 
 app.set('port', process.env.PORT || 3000);
 
