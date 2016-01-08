@@ -18,6 +18,9 @@ angular.module('nova.services', [])
     })
   };
 
+  var update = function(){
+    
+  };
 
   var signout = function(){
     
