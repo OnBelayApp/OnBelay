@@ -21,5 +21,6 @@ apiRouter.get('/auth/user/climbers', user.findActiveClimbers);
 apiRouter.all('/auth/user/flag', flag.climbFlag);
 apiRouter.get('/auth/user/notifications/incoming', notify.getNotifications);
 apiRouter.post('/auth/user/notifications/create', notify.sendNotification);
+apiRouter.put('/auth/user/notifications/read', notify.readNotification);
 
 module.exports = apiRouter;

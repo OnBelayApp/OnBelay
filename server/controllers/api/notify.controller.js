@@ -57,6 +57,7 @@ function getNotifications(req, res) {
 
             if (!notification.isResolved) {
               return {
+                id: notification._id,
                 sender: {
                   username: notification.sender.username
                 },
@@ -71,7 +72,26 @@ function getNotifications(req, res) {
   });
 }
 
+function readNotification(req, res) {
+  var authUser = req.decoded.user;
+  var notificationId = req.body.notificationId;
+
+  User.findOne({ username: authUser }, function(err, user) {
+    if (err) console.error(err);
+
+    if (!user) {
+      res.json({ success: false, reason: 'User does not exist' });
+    } else {
+      Notification.findOne(notificationId, function(err, notification) {
+          notification.isRead = true;
+          res.json({ success: true });
+      });
+    }
+  });
+}
+
 module.exports = {
   sendNotification: sendNotification,
-  getNotifications: getNotifications
+  getNotifications: getNotifications,
+  readNotification: readNotification
 };
