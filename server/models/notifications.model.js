@@ -19,12 +19,12 @@ notificationSchema.pre('save', function(next) {
   next();
 });
 
-notificationSchema.methods.resolve = function(notification) {
-  notification.isResolved = true;
+notificationSchema.methods.markResolved = function() {
+  this.isResolved = true;
 };
 
-notificationSchema.methods.resolve = function(notification) {
-  notification.isRead = true;
+notificationSchema.methods.markRead = function() {
+  this.isRead = true;
 };
 
 var Notification = mongoose.model('Notification', notificationSchema);
