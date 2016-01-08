@@ -53,36 +53,66 @@ function getNotifications(req, res) {
 
       Notification.find({ _id: { $in: user.notifications.incoming }}, function(err, notifications) {
 
-          var respNotifications = notifications.map(function(notification) {
+        var respNotifications = notifications.map(function(notification) {
 
-            if (!notification.isResolved) {
-              return {
-                id: notification._id,
-                sender: {
-                  username: notification.sender.username
-                },
-                isRead: notification.isRead,
-                createdAt: notification.createdAt
-              };
-            }
-          });
-          res.json(respNotifications);
+          if (!notification.isResolved) {
+            return {
+              id: notification._id,
+              sender: {
+                username: notification.sender.username
+              },
+              isRead: notification.isRead,
+              createdAt: notification.createdAt
+            };
+          }
+        }).filter(function(item) {
+          return !!item;
+        });
+        res.json(respNotifications);
       });
     }
   });
 }
 
-function readNotification(req, res) {
-  var notificationId = req.body.notificationId;
+function readNotifications(req, res) {
+  var authUser = req.decoded.user;
 
-  Notification.findOne(notificationId, function(err, notification) {
-    notification.isRead = true;
-    res.json({ success: true });
+  User.findOne({ username: authUser }, function(err, user) {
+    if (err) console.error(err);
+
+    if (!user) {
+      res.json({ success: false, reason: 'User does not exist' });
+    } else {
+
+      Notification.find({ _id: { $in: user.notifications.incoming }}, function(err, notifications) {
+
+        notifications.forEach(function(notification) {
+          notification.markRead();
+          res.json({ success: true });
+        });
+      });
+    }
+  });  
+}
+
+function replyNotification(req, res) {
+  var notificationId = req.body.notificationId;
+  var reply = req.body.reply;
+
+  Notification.findById(notificationId, function(err, notification) {
+    if (err) console.error(err);
+
+    notification.markAccepted(reply)
+    notification.markResolved();
+    notification.save(function(err, notification) {
+      res.json({ success: true });
+    });
   });
 }
 
 module.exports = {
   sendNotification: sendNotification,
   getNotifications: getNotifications,
-  readNotification: readNotification
+  readNotifications: readNotifications,
+  replyNotification: replyNotification
 };

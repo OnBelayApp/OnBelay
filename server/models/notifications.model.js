@@ -8,6 +8,7 @@ var notificationSchema = mongoose.Schema({
   },
   recipient: { type: ObjectId, ref: 'User' },
   isRead: { type: Boolean, default: false },
+  isAccepted: { type: Boolean, default: false },
   isResolved: { type: Boolean, default: false },
   createdAt: Date,
   updatedAt: Date
@@ -25,6 +26,10 @@ notificationSchema.pre('save', function(next) {
 notificationSchema.methods.markResolved = function() {
   this.isResolved = true;
 };
+
+notificationSchema.methods.markAccepted = function(reply) {
+  this.isAccepted = reply;
+}
 
 notificationSchema.methods.markRead = function() {
   this.isRead = true;
