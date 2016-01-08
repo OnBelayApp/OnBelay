@@ -2,7 +2,14 @@ angular.module('nova.services', [])
 
 .factory('Auth', function($http){
 
-  var signin = function(){ };
+  var signin = function(user){
+    return $http.post('/api/signin', user).then(function(response){
+      return response.data.token;
+    }).catch(function(err){
+      console.error(err);
+    })
+
+   };
 
   var signup = function(user){
     return $http.post('/api/signup', user).then(function(response){
