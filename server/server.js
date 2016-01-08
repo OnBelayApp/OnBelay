@@ -2,7 +2,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
-    API = require('./controllers/api')
+    API = require('./controllers/api');
 
 var app = express();
 
