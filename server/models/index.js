@@ -1,5 +1,7 @@
-var User = require('./user.model.js');
+var User = require('./user.model'),
+    Notification = require('./notifications.model');
 
 module.exports = {
-  User: User
+  User: User,
+  Notification: Notification
 };
