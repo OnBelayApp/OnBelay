@@ -1,7 +1,6 @@
 angular.module('nova', [
   'nova.auth',
-  // 'nova.services',
-//add 'ui.router' as a dependency
+  'nova.services',
   'ui.router'
 ])
 
@@ -11,22 +10,22 @@ angular.module('nova', [
     .state('main', {
       url: "/main",
       templateUrl: "app/main/main.html",
-      controller: "MainController"
+      // controller: "MainController"
     })
     .state('signin', {
       url: "/signin",
       templateUrl: "app/auth/signin.html",
-      controller: "AuthController"
+      // controller: "AuthController"
     })
     .state('signup', {
       url: "/signup",
       templateUrl: "app/auth/signup.html",
-      controller: "AuthController"
+      // controller: "AuthController"
     })
     .state('update', {
       url: "/update",
       templateUrl: "TODO/update.html",
-      controller: "TODO"
+      // controller: "TODO"
     });
 
     // $httpProvider.interceptors.push('AttachTokens');
