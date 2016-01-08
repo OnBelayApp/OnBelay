@@ -2,7 +2,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
-    API = require('./controllers/api');
+    controllers = require('./controllers');
 
 var app = express();
 
@@ -14,7 +14,7 @@ app.set('port', process.env.PORT || 3000);
 
 mongoose.connect('mongodb://localhost/onbelay');
 
-app.use('/api', API);
+controllers.climbOn(app);
 
 app.listen(app.get('port'), function() {
   console.log('climb on', app.get('port'));

@@ -3,7 +3,8 @@ var express = require('express'),
     profile = require('./profile.controller'),
     token = require('../../middleware/'),
     user = require('./user.controller.js')
-    flag = require('./flag.controller.js');
+    flag = require('./flag.controller.js'),
+    notify = require('./notify.controller.js');
 
 
 var apiRouter = express.Router();
@@ -18,5 +19,9 @@ apiRouter.use('/auth', token.authenticate);
 apiRouter.put('/auth/user/update', profile.updateProfile);
 apiRouter.get('/auth/user/climbers', user.findActiveClimbers);
 apiRouter.all('/auth/user/flag', flag.climbFlag);
+apiRouter.get('/auth/user/notifications/incoming', notify.getNotifications);
+apiRouter.post('/auth/user/notifications/create', notify.sendNotification);
+apiRouter.put('/auth/user/notifications/read', notify.readNotifications);
+apiRouter.put('/auth/user/notifications/reply', notify.replyNotification);
 
 module.exports = apiRouter;
