@@ -1,7 +1,8 @@
 angular.module('nova', [
   'nova.auth',
   'nova.services',
-  'ui.router'
+  'ui.router',
+  'nova.main'
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
@@ -26,6 +27,12 @@ angular.module('nova', [
       url: "/update",
       templateUrl: "TODO/update.html",
       controller: "TODO"
+    })
+    .state('logout', {
+      url: "/logout",
+      controller: function($scope, Auth){
+        Auth.signout();
+      }
     });
 
     $httpProvider.interceptors.push('AttachTokens');

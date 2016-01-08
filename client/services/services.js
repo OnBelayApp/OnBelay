@@ -5,7 +5,7 @@ angular.module('nova.services', [])
   var signin = function(user){
     return $http({
       method: 'POST',
-      url: '/signin',
+      url: '/api/signin',
       data: user
     })
     .then(function(resp){
@@ -16,7 +16,7 @@ angular.module('nova.services', [])
   var signup = function(user){
     return $http({
       method: 'POST',
-      url: '/signup',
+      url: '/api/signup',
       data: user
     })
     .then(function(resp){
@@ -26,7 +26,7 @@ angular.module('nova.services', [])
 
   var signout = function(){
     $window.localStorage.removeItem('com.nova');
-    $state.go('/signin');
+    $state.go('signin');
   };
 
   var isAuth = function(){
@@ -47,7 +47,7 @@ angular.module('nova.services', [])
   var getClimbers = function(){
     return $http({
       method: 'GET',
-      url: "/auth/user/climbers",
+      url: "/api/auth/user/climbers",
     }).then(function(res){
       return res;
     });
