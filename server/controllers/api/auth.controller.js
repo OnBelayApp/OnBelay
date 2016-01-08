@@ -27,7 +27,7 @@ module.exports = {
   },
   signUp: function(req, res) {
 
-    User.findOne({ req.body.username }, function(err, user) {
+    User.findOne({ username: req.body.username }, function(err, user) {
       if (err) console.error(err);
 
       if (user) {
@@ -48,8 +48,8 @@ module.exports = {
 
             var token = createToken(user);
             res.json({ success: true, token: token });
-          })
-        })
+          });
+        });
       }
     });
   }
