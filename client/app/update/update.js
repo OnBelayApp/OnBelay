@@ -1,6 +1,6 @@
 angular.module('nova.update', [])
 
-.controller('UpdateController', function($scope, Update){
+.controller('UpdateController', function($scope, $state, Update){
   $scope.user = {};
   $scope.update = function(){
     Update.update($scope.user)

@@ -59,8 +59,8 @@ angular.module('nova.services', [])
 })
 
 .factory('Update', function($http){
-  var update = function(){
-    return $http.post('/api/auth/user/update', user)
+  var update = function(user){
+    return $http.put('/api/auth/user/update', user)
     .then(function(response){
       return response.data;
     })
