@@ -2,7 +2,8 @@ angular.module('nova', [
   'nova.auth',
   'nova.services',
   'ui.router',
-  'nova.main'
+  'nova.main',
+  'nova.notifications'
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
@@ -33,6 +34,11 @@ angular.module('nova', [
       controller: function($scope, Auth){
         Auth.signout();
       }
+    })
+    .state('notifications', {
+      url: "/notifications",
+      templateUrl: "app/notifications/notifications.html",
+      controller: "NotificationCtrl"
     });
 
     $httpProvider.interceptors.push('AttachTokens');
