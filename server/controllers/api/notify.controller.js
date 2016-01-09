@@ -110,9 +110,32 @@ function replyNotification(req, res) {
   });
 }
 
+function checkUnread(req, res) {
+  var authUser = req.decoded.user;
+
+  User.findOne({ username: authUser }, function(err, user) {
+    if (err) console.error(err);
+
+    if (!user) {
+      res.json({ success: false, reason: 'User not found' });
+    } else {
+      Notification.find({ _id: { $in: user.notifications }}, function(err, notifications) {
+        if (err) console.error(err);
+
+        var unread = notifications.some(function(notification) {
+          return notification.isRead === false;
+        });
+
+        res.json(unread);
+      });
+    }
+  })
+}
+
 module.exports = {
   sendNotification: sendNotification,
   getNotifications: getNotifications,
   readNotifications: readNotifications,
-  replyNotification: replyNotification
+  replyNotification: replyNotification,
+  checkUnread: checkUnread
 };
