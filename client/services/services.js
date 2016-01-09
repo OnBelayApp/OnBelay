@@ -65,7 +65,7 @@ angular.module('nova.services', [])
     return $http({
       method: 'POST',
       url: '/api/auth/user/notifications/create',
-      data: climber
+      data: {targetUser: climber}
     }).then(function(res) {
       return res.data;
     });
