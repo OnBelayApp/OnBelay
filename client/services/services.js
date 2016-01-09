@@ -114,11 +114,4 @@ angular.module('nova.services', [])
     });
   };
 
-  return {
-    sendNotification: sendNotification,
-    fetchAllNotifications: fetchAllNotifications,
-    markAllNotificationsRead: markAllNotificationsRead,
-    replyToClimber: replyToClimber
-  };
-
 });
