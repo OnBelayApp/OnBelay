@@ -12,7 +12,7 @@ var userSchema = mongoose.Schema({
   zipCode: Number,
   skillLevel: String,
   gender: String,
-  climb: Boolean,
+  climb: { type: Boolean, default: false },
   notifications: {
     incoming: [{ type: ObjectId, ref: 'Notification' }],
     outgoing: [{ type: ObjectId, ref: 'Notification' }]
