@@ -17,7 +17,7 @@ function sendNotification (req, res) {
         newNotification = new Notification({
           sender: {
             id: sender.id._id,
-            username: target.username
+            username: sender.username
           },
           recipient: target._id
         });
@@ -39,12 +39,13 @@ function sendNotification (req, res) {
       });
     }
   });
-};
+}
 
 function getNotifications(req, res) {
   var authUser = req.decoded.user;
 
   User.findOne({ username: authUser }, function(err, user) {
+
     if (err) console.error(err);
 
     if (!user) {
@@ -52,6 +53,8 @@ function getNotifications(req, res) {
     } else {
 
       Notification.find({ _id: { $in: user.notifications.incoming }}, function(err, notifications) {
+
+        if (err) console.error(err);
 
         var respNotifications = notifications.map(function(notification) {
 
@@ -68,6 +71,7 @@ function getNotifications(req, res) {
         }).filter(function(item) {
           return !!item;
         });
+        console.log('result from get notifications in server', respNotifications);
         res.json(respNotifications);
       });
     }
@@ -88,11 +92,12 @@ function readNotifications(req, res) {
 
         notifications.forEach(function(notification) {
           notification.markRead();
+          console.log('readNotifications');
           res.json({ success: true });
         });
       });
     }
-  });  
+  });
 }
 
 function replyNotification(req, res) {
@@ -102,7 +107,7 @@ function replyNotification(req, res) {
   Notification.findById(notificationId, function(err, notification) {
     if (err) console.error(err);
 
-    notification.markAccepted(reply)
+    notification.markAccepted(reply);
     notification.markResolved();
     notification.save(function(err, notification) {
       res.json({ success: true });
@@ -129,7 +134,7 @@ function checkUnread(req, res) {
         res.json(unread);
       });
     }
-  })
+  });
 }
 
 module.exports = {

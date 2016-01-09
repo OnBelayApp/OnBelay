@@ -5,7 +5,7 @@ angular.module('nova.services', [])
   var signin = function(user){
     return $http({
       method: 'POST',
-      url: '/signin',
+      url: '/api/signin',
       data: user
     })
     .then(function(resp){
@@ -16,7 +16,7 @@ angular.module('nova.services', [])
   var signup = function(user){
     return $http({
       method: 'POST',
-      url: '/signup',
+      url: '/api/signup',
       data: user
     })
     .then(function(resp){
@@ -48,6 +48,7 @@ angular.module('nova.services', [])
       method: 'GET',
       url: "/api/auth/user/climbers"
     }).then(function(res){
+      console.log('res in fact', res);
       return res.data;
     });
   };
@@ -89,7 +90,7 @@ angular.module('nova.services', [])
   var fetchAllNotifications = function() {
     return $http({
       method: 'GET',
-      url: '/api/auth/user/notifications/'
+      url: '/api/auth/user/notifications/incoming'
     }).then(function(res) {
       return res.data;
     });
@@ -112,6 +113,13 @@ angular.module('nova.services', [])
     }).then(function(res) {
       return res.data;
     });
+  };
+
+  return {
+    sendNotification: sendNotification,
+    fetchAllNotifications: fetchAllNotifications,
+    markAllNotificationsRead: markAllNotificationsRead,
+    replyToClimber: replyToClimber
   };
 
 });

@@ -4,6 +4,7 @@ angular.module('nova.notifications', [])
     $scope.notifications = [];
 
     $scope.getAllNotifications = function() {
+      console.log('get all');
       Notify.fetchAllNotifications()
         .then(function(res) {
           $scope.notifications = res;
@@ -14,7 +15,8 @@ angular.module('nova.notifications', [])
     }();
 
     $scope.readAllNotifications = function() {
-      Notify.markAllNotificationsRead
+      console.log('running');
+      Notify.markAllNotificationsRead()
         .then(function(res) {
           console.log(res);
         })
