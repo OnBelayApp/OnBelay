@@ -2,13 +2,7 @@
   <ul>
     <li class='notify' ng-repeat="climber in notifications">
       <div>
-        {{climber.name.first}} {{climber.name.last}}
-      </div>
-      <div>
-        {{climber.skillLevel}}
-      </div>
-      <div>
-        {{climber.gender}}
+        {{climber.sender.username}}
       </div>
       <button class='climbOnBtn' ng-click='climbOn(climber)'>Climb On</button>
     </li>
