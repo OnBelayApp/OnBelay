@@ -5,7 +5,7 @@ angular.module('nova.services', [])
   var signin = function(user){
     return $http({
       method: 'POST',
-      url: '/signin',
+      url: '/api/signin',
       data: user
     })
     .then(function(resp){
@@ -16,7 +16,7 @@ angular.module('nova.services', [])
   var signup = function(user){
     return $http({
       method: 'POST',
-      url: '/signup',
+      url: '/api/signup',
       data: user
     })
     .then(function(resp){
