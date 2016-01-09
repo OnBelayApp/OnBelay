@@ -24,16 +24,6 @@ angular.module('nova.services', [])
     })
   };
 
-  var update = function(){
-    return $http.post('/api/auth/user/update', user)
-    .then(function(response){
-      return response.data;
-    })
-    .catch(function(err){
-      console.error(err);
-    });
-  };
-
   var signout = function(){
     $window.localStorage.removeItem('com.nova');
     $state.go('signin');
@@ -51,7 +41,6 @@ angular.module('nova.services', [])
     };
 })
 
-
 .factory('Climbers', function($http){
 
   var getClimbers = function(){
@@ -67,4 +56,20 @@ angular.module('nova.services', [])
     getClimbers: getClimbers
   };
 
+})
+
+.factory('Update', function($http){
+  var update = function(){
+    return $http.post('/api/auth/user/update', user)
+    .then(function(response){
+      return response.data;
+    })
+    .catch(function(err){
+      console.error(err);
+    });
+  };
+
+  return {
+    update: update
+  }
 });
