@@ -5,7 +5,7 @@ angular.module('nova.services', [])
   var signin = function(user){
     return $http({
       method: 'POST',
-      url: '/api/signin',
+      url: '/signin',
       data: user
     })
     .then(function(resp){
@@ -16,12 +16,12 @@ angular.module('nova.services', [])
   var signup = function(user){
     return $http({
       method: 'POST',
-      url: '/api/signup',
+      url: '/signup',
       data: user
     })
     .then(function(resp){
       return resp.data.token;
-    })
+    });
   };
 
   var signout = function(){
@@ -46,9 +46,9 @@ angular.module('nova.services', [])
   var getClimbers = function(){
     return $http({
       method: 'GET',
-      url: "/api/auth/user/climbers",
+      url: "/api/auth/user/climbers"
     }).then(function(res){
-      return res;
+      return res.data;
     });
   };
 
@@ -71,5 +71,54 @@ angular.module('nova.services', [])
 
   return {
     update: update
-  }
+  };
+
+})
+.factory('Notify', function($http) {
+
+  var sendNotification = function(climber) {
+    return $http({
+      method: 'POST',
+      url: '/api/auth/user/notifications/create',
+      data: climber
+    }).then(function(res) {
+      return res.data;
+    });
+  };
+
+  var fetchAllNotifications = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/auth/user/notifications/'
+    }).then(function(res) {
+      return res.data;
+    });
+  };
+
+  var markAllNotificationsRead = function() {
+    return $http({
+      method: 'PUT',
+      url: '/api/auth/user/notifications/read'
+    }).then(function(res) {
+      return res.data;
+    });
+  };
+
+  var replyToClimber = function(climber) {
+    return $http({
+      method: 'PUT',
+      url: '/api/auth/user/notifications/reply',
+      data: climber
+    }).then(function(res) {
+      return res.data;
+    });
+  };
+
+  return {
+    sendNotification: sendNotification,
+    fetchAllNotifications: fetchAllNotifications,
+    markAllNotificationsRead: markAllNotificationsRead,
+    replyToClimber: replyToClimber
+  };
+
 });
