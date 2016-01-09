@@ -11,7 +11,7 @@ angular.module('nova.main', [])
         .catch(function(err) {
           console.error(err);
         });
-    };
+    }();
 
     $scope.climbOn = function(climber) {
       Notify.sendNotification(climber)
