@@ -1,0 +1,16 @@
+<div id="container">
+  <ul>
+    <li class='notify' ng-repeat="climber in notifications">
+      <div>
+        {{climber.name.first}} {{climber.name.last}}
+      </div>
+      <div>
+        {{climber.skillLevel}}
+      </div>
+      <div>
+        {{climber.gender}}
+      </div>
+      <button class='climbOnBtn' ng-click='climbOn(climber)'>Climb On</button>
+    </li>
+  </ul>
+</div>
