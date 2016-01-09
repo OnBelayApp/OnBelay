@@ -2,7 +2,8 @@ angular.module('nova', [
   'nova.auth',
   'nova.services',
   'ui.router',
-  'nova.main'
+  'nova.main',
+  'nova.update'
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
@@ -25,8 +26,8 @@ angular.module('nova', [
     })
     .state('update', {
       url: "/update",
-      templateUrl: "TODO/update.html",
-      controller: "TODO"
+      templateUrl: "app/update/update.html",
+      controller: "UpdateController"
     })
     .state('logout', {
       url: "/logout",

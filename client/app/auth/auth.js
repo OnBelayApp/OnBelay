@@ -24,16 +24,4 @@ angular.module('nova.auth', [])
         console.error(error);
       });
   };
-
-  $scope.update = function(){
-    Auth.update($scope.user)
-    .then(function (token) {
-        $state.go('main');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  };
-
-
 });
