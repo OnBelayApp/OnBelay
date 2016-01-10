@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="[ col-sm-6 col-md-offset-1 col-md-4 ]" class='climbers' ng-repeat="climber in activeClimbers" ng-if="climber">
+      <div class="[col-md-offset-1 col-md-4 ]" class='climbers' ng-repeat="climber in activeClimbers" ng-if="climber">
         <div class="[ info-card ]">
           <img style="width: 100%" src="https://placehold.it/350x350" />
           <div class="[ info-card-details ] animate">
@@ -12,7 +12,7 @@
             </div>
             <div class="[ info-card-detail ]">
               <!-- Description -->
-              <p>Polaroid yr vegan portland freegan, four dollar toast sustainable pinterest farm-to-table authentic slow-carb typewriter. Cray PBR&B single-origin coffee, migas cred chicharrones ennui scenester synth gentrify neutra tumblr. </p>
+              <p>Looking to climb with some fellow {{climber.skillLevel}} climbers! </p>
               <button class='climbOnBtn' ng-click='climbOn(climber.username)'>Climb On</button>
               <div class="social">
 
