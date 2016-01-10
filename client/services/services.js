@@ -87,6 +87,15 @@ angular.module('nova.services', [])
     });
   };
 
+  var checkNotifications = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/auth/user/notifications/unread'
+    }).then(function(resp) {
+      return resp.data;
+    });
+  };
+
   var fetchAllNotifications = function() {
     return $http({
       method: 'GET',
@@ -117,6 +126,7 @@ angular.module('nova.services', [])
 
   return {
     sendNotification: sendNotification,
+    checkNotifications: checkNotifications,
     fetchAllNotifications: fetchAllNotifications,
     markAllNotificationsRead: markAllNotificationsRead,
     replyToClimber: replyToClimber

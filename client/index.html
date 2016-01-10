@@ -8,12 +8,10 @@
 </head>
 <body>
 <!-- ui-router nav -->
-  <div>
-    <a ui-sref="main">Main</a>
-    <a ui-sref="signin">Sign In</a>
-    <a ui-sref="signup">Sign Up</a>
-    <a ui-sref="update">Update</a>
-    <a ui-sref="notifications">Notifications</a>
+  <div ng-controller="AuthController" ng-show="!Auth.isAuth()">
+    <a ui-sref="notifications" class="">{{ unreadNotifications }}</a>
+    <a ui-sref="main">Climb</a>
+    <a ui-sref="update">Profile</a>
     <a ui-sref="logout">Log Out</a>
   </div>
 
