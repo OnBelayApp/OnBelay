@@ -5,6 +5,7 @@
 
 header {
   padding: 1.5rem 2%;
+  margin-bottom: 4rem;
   background-color: #3498db;
   box-shadow: 0 2px 4px rgba(20,20,20,0.3);
 }
