@@ -32,11 +32,13 @@ angular.module('nova.auth', [])
       });
   };
 
+  $scope.unread;
+
   $scope.checkNotifications = function() {
     if (Auth.isAuth() && $state.name !== 'notifications') {
       Notify.checkNotifications().then(function(resp) {
-        $scope.unreadNotifications = resp;
-      })
+        $scope.unread = resp;
+      });
     }
   };
 

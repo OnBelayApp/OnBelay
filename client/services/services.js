@@ -77,8 +77,6 @@ angular.module('nova.services', [])
 
 .factory('Notify', function($http) {
 
-  var unreadNotifications = 0;
-
   var sendNotification = function(climber) {
     return $http({
       method: 'POST',
@@ -94,7 +92,6 @@ angular.module('nova.services', [])
       method: 'GET',
       url: '/api/auth/user/notifications/unread'
     }).then(function(resp) {
-      unreadNotifications = resp.data;
       return resp.data;
     });
   };
@@ -128,7 +125,6 @@ angular.module('nova.services', [])
   };
 
   return {
-    unreadNotifications: unreadNotifications,
     sendNotification: sendNotification,
     checkNotifications: checkNotifications,
     fetchAllNotifications: fetchAllNotifications,
