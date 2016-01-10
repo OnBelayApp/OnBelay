@@ -127,8 +127,6 @@ function checkUnread(req, res) {
       Notification.find({ _id: { $in: user.notifications.incoming }}, function(err, notifications) {
         if (err) console.error(err);
 
-        console.log(notifications);
-
         var unread = notifications.filter(function(notification) {
           return notification.isRead === false;
         }).length;
