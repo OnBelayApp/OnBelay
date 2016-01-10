@@ -1,8 +1,13 @@
 <!DOCTYPE HTML>
 <html ng-app="nova">
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>OnBelay</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,100,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -11,14 +16,16 @@
   <header class="clearfix">
 
     <div class="logo">
-      <img src="assets/img/logo-onbelay.png" alt="OnBelay Logo">      
+      <a ui-sref="main">
+        <img src="assets/img/logo-onbelay.png" alt="OnBelay Logo">
+      </a>
     </div>
 <!-- ui-router nav -->
     <nav ng-controller="AuthController" ng-show="hasAuth" role="navigation">
-      <a ui-sref="notifications" class="notification-icon">{{ unreadNotifications }}</a>
-      <a ui-sref="main">Climb</a>
-      <a ui-sref="update">Profile</a>
-      <a ui-sref="logout">Log Out</a>
+      <a ui-sref="notifications" ui-sref-active="active-nav" class="notification-icon">{{ unreadNotifications }}</a>
+      <a ui-sref="main" ui-sref-active="active-nav">Climb</a>
+      <a ui-sref="update" ui-sref-active="active-nav">Profile</a>
+      <a ui-sref="logout" ui-sref-active="active-nav">Log Out</a>
     </nav>
 
   </header>

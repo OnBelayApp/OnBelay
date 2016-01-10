@@ -5,6 +5,7 @@
 
 header {
   padding: 1.5rem 2%;
+  margin-bottom: 4rem;
   background-color: #3498db;
   box-shadow: 0 2px 4px rgba(20,20,20,0.3);
 }
@@ -30,6 +31,19 @@ nav a {
   margin-right: 2.5rem;
 }
 
+nav a.active-nav {
+  position: relative;
+}
+
+nav a.active-nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
 .notification-icon {
   position: relative;
   z-index: 1;
@@ -49,7 +63,7 @@ nav a {
   z-index: -1;
 }
 
-nav a:hover {
+nav a:hover, nav a:active, nav a:focus, nav a:visited {
   color: #fff;
   text-decoration: none;
 }

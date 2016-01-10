@@ -1,7 +1,7 @@
 <div id="container">
   <button>Climb</button>
   <ul>
-    <li class='climbers' ng-repeat="climber in activeClimbers">
+    <li class='climbers' ng-repeat="climber in activeClimbers" ng-if="climber">
       <div>
         {{climber.first}} {{climber.last}}
       </div>
