@@ -6,6 +6,7 @@ module.exports = {
       if (err) console.error(err);
       var result = climbers.map(function(climber) {
         return {
+          username: climber.username,
           first: climber.name.first,
           last: climber.name.last,
           zipCode: climber.zipCode,

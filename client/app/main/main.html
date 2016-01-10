@@ -3,7 +3,7 @@
   <ul>
     <li class='climbers' ng-repeat="climber in activeClimbers">
       <div>
-        {{climber.name.first}} {{climber.name.last}}
+        {{climber.first}} {{climber.last}}
       </div>
       <div>
         {{climber.skillLevel}}
@@ -11,7 +11,7 @@
       <div>
         {{climber.gender}}
       </div>
-      <button class='climbOnBtn'>Climb On</button>
+      <button class='climbOnBtn' ng-click='climbOn(climber.username)'>Climb On</button>
     </li>
   </ul>
 </div>

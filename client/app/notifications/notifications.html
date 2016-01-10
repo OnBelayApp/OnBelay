@@ -1,0 +1,10 @@
+<div id="container">
+  <ul>
+    <li class='notify' ng-repeat="climber in notifications">
+      <div>
+        {{climber.sender.username}}
+      </div>
+      <button class='climbOnBtn' ng-click='climbOn(climber)'>Climb On</button>
+    </li>
+  </ul>
+</div>
