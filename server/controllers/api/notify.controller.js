@@ -91,6 +91,7 @@ function readNotifications(req, res) {
 
         notifications.forEach(function(notification) {
           notification.markRead();
+          notification.save();
         });
 
         res.json({ success: true });
