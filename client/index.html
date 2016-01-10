@@ -7,13 +7,21 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+  <header class="clearfix">
+
+    <div class="logo">
+      <img src="assets/img/logo-onbelay.png" alt="OnBelay Logo">      
+    </div>
 <!-- ui-router nav -->
-  <div ng-controller="AuthController" ng-show="!Auth.isAuth()">
-    <a ui-sref="notifications" class="">{{ unreadNotifications }}</a>
-    <a ui-sref="main">Climb</a>
-    <a ui-sref="update">Profile</a>
-    <a ui-sref="logout">Log Out</a>
-  </div>
+    <nav ng-controller="AuthController" ng-show="hasAuth" role="navigation">
+      <a ui-sref="notifications" class="notification-icon">{{ unreadNotifications }}</a>
+      <a ui-sref="main">Climb</a>
+      <a ui-sref="update">Profile</a>
+      <a ui-sref="logout">Log Out</a>
+    </nav>
+
+  </header>
 
   <div ui-view></div>
 

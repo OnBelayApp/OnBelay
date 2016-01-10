@@ -2,6 +2,13 @@ angular.module('nova.auth', [])
 
 .controller('AuthController', function ($scope, $window, $state, Auth, Notify) {
   $scope.user = {};
+  $scope.hasAuth;
+
+  if (Auth.isAuth()) {
+    $scope.hasAuth = true;
+  } else {
+    $scope.hasAuth = false;
+  }
 
   $scope.signin = function () {
     Auth.signin($scope.user)
@@ -28,9 +35,11 @@ angular.module('nova.auth', [])
   $scope.unreadNotifications = 0;
 
   $scope.checkNotifications = function() {
-    Notify.checkNotifications().then(function(resp) {
-      $scope.hasNotifications = resp.data;
-    });
+    if (Auth.isAuth()) {
+      Notify.checkNotifications().then(function(resp) {
+        $scope.hasNotifications = resp.data;
+      });
+    }
   };
 
   $scope.checkNotifications();
