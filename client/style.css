@@ -49,7 +49,7 @@ nav a {
   z-index: -1;
 }
 
-nav a:hover {
+nav a:hover, nav a:active, nav a:focus, nav a:visited {
   color: #fff;
   text-decoration: none;
 }
