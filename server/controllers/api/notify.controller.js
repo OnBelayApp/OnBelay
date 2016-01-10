@@ -71,7 +71,6 @@ function getNotifications(req, res) {
         }).filter(function(item) {
           return !!item;
         });
-        console.log('result from get notifications in server', respNotifications);
         res.json(respNotifications);
       });
     }
@@ -92,9 +91,9 @@ function readNotifications(req, res) {
 
         notifications.forEach(function(notification) {
           notification.markRead();
-          console.log('readNotifications');
-          res.json({ success: true });
         });
+
+        res.json({ success: true });
       });
     }
   });
