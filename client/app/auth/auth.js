@@ -37,7 +37,7 @@ angular.module('nova.auth', [])
   $scope.checkNotifications = function() {
     if (Auth.isAuth()) {
       Notify.checkNotifications().then(function(resp) {
-        $scope.hasNotifications = resp.data;
+        $scope.unreadNotifications = resp;
       });
     }
   };
