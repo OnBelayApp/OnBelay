@@ -50,7 +50,11 @@ nav a.active-nav::after {
   margin-right: 4rem;
 }
 
-.notification-icon::after {
+.notification-icon.active-nav::after {
+  border-bottom: none;
+}
+
+.notification-icon::before {
   content: '';
   display: block;
   position: absolute;
