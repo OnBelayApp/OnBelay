@@ -1,66 +1,32 @@
 <!DOCTYPE HTML>
-
 <html ng-app="nova">
-
 <head>
-<title>OnBelay</title>
+  <title>OnBelay</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="style.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
-
 <body>
-
-
 <!-- ui-router nav -->
-<div>
-<a ui-sref="main">Main</a>
-<a ui-sref="signin">Sign In</a>
-<a ui-sref="signup">Sign Up</a>
-<a ui-sref="update">Update</a>
-<a ui-sref="notifications">Notifications</a>
-<a ui-sref="logout">Log Out</a>
-</div>
+  <div>
+    <a ui-sref="main">Main</a>
+    <a ui-sref="signin">Sign In</a>
+    <a ui-sref="signup">Sign Up</a>
+    <a ui-sref="update">Update</a>
+    <a ui-sref="notifications">Notifications</a>
+    <a ui-sref="logout">Log Out</a>
+  </div>
 
 <div ui-view></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-
-<script src="services/services.js"></script>
-<script src="app/auth/auth.js"></script>
-<script src="app/notifications/notifications.js"></script>
-<script src="app/main/main.js"></script>
-<script src="app/update/update.js"></script>
-<script src="app/app.js"></script>
-
-
-
-
-
-
-
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+  <script src="services/services.js"></script>
+  <script src="app/auth/auth.js"></script>
+  <script src="app/notifications/notifications.js"></script>
+  <script src="app/main/main.js"></script>
+  <script src="app/update/update.js"></script>
+  <script src="app/app.js"></script>
+  
 </body>
 </html>
