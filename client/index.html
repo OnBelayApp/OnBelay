@@ -16,14 +16,16 @@
   <header class="clearfix">
 
     <div class="logo">
-      <img src="assets/img/logo-onbelay.png" alt="OnBelay Logo">      
+      <a ui-sref="main">
+        <img src="assets/img/logo-onbelay.png" alt="OnBelay Logo">
+      </a>
     </div>
 <!-- ui-router nav -->
     <nav ng-controller="AuthController" ng-show="hasAuth" role="navigation">
-      <a ui-sref="notifications" class="notification-icon">{{ unreadNotifications }}</a>
-      <a ui-sref="main">Climb</a>
-      <a ui-sref="update">Profile</a>
-      <a ui-sref="logout">Log Out</a>
+      <a ui-sref="notifications" ui-sref-active="active-nav" class="notification-icon">{{ unreadNotifications }}</a>
+      <a ui-sref="main" ui-sref-active="active-nav">Climb</a>
+      <a ui-sref="update" ui-sref-active="active-nav">Profile</a>
+      <a ui-sref="logout" ui-sref-active="active-nav">Log Out</a>
     </nav>
 
   </header>

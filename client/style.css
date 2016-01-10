@@ -31,6 +31,19 @@ nav a {
   margin-right: 2.5rem;
 }
 
+nav a.active-nav {
+  position: relative;
+}
+
+nav a.active-nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+}
+
 .notification-icon {
   position: relative;
   z-index: 1;
