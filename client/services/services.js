@@ -75,7 +75,7 @@ angular.module('nova.services', [])
 
 })
 
-.factory('Notify', function($http) {
+.factory('Notify', function($http, $rootScope) {
 
   var sendNotification = function(climber) {
     return $http({
@@ -92,7 +92,8 @@ angular.module('nova.services', [])
       method: 'GET',
       url: '/api/auth/user/notifications/unread'
     }).then(function(resp) {
-      return resp.data;
+      $rootScope.unread = resp.data;
+      console.log($rootScope.unread);
     });
   };
 
@@ -110,6 +111,7 @@ angular.module('nova.services', [])
       method: 'PUT',
       url: '/api/auth/user/notifications/read'
     }).then(function(resp) {
+      $rootScope.unread = 0;
       return resp.data
     });
   };
