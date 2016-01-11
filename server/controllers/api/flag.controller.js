@@ -1,14 +1,16 @@
 var User = require('../../models').User;
 
 exports.climbFlag = function(req, res) {
-  var updateUser = req.decoded.user;
-  var climbStatus = req.body.flag;
+  var authUser = req.decoded.user;
+  var updateSender = false;
+  var sender;
 
-  if (req.body.username) {
-    updateUser = req.body.username;
+  if (req.body.sender) {
+    updateSender = true;
+    sender = req.body.sender.username;
   }
   //find User
-  User.findOne({ username: updateUser }, function(err, user) {
+  User.findOne({ username: authUser }, function(err, user) {
     if (err) console.error(err);
 
     if (!user) {
@@ -18,7 +20,29 @@ exports.climbFlag = function(req, res) {
       switch (req.method) {
 
         case 'PUT' :
-          user.climb = climbStatus;
+
+          if (updateSender) {
+            User.findOne({ username: sender }, function(err, sender) {
+              if (err) console.error(err);
+
+              if (!sender) {
+                res.json({ success: false, reason: 'Sender not found' });
+              } else {
+                sender.climb = false;
+                sender.save(function(err, user) {
+
+                  if (err) console.error(err);
+
+                  res.json({ success: true, status: sender.climb });
+
+                });
+
+              }
+            });
+            user.climb = false;
+          } else {
+            user.climb = !user.climb;
+          }
 
           user.save(function(err, user) {
             if (err) console.error(err);

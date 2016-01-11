@@ -27,29 +27,18 @@ angular.module('nova.notifications', [])
       Notify.replyToClimber(climber)
         .then(function(res) {
           console.log(res);
+          // Turn flags off for both users
+          Climbers.updateStatus(climber)
+            .then(function(res) {
+              console.log(res);
+            })
+            .catch(function(err) {
+              console.error(err);
+            });
         })
         .catch(function(err) {
           console.error(err);
         });
-
-      // Turn flag off of current user
-      Climbers.updateStatus(false)
-        .then(function(res) {
-          console.log(res);
-        })
-        .catch(function(err) {
-          console.error(err);
-        });
-
-      // Turn flag off of requesting user
-      Climbers.updateStatus(false, climber)
-        .then(function(res) {
-          console.log(res);
-        })
-        .catch(function(err) {
-          console.error(err);
-        });
-
     };
 
   });
