@@ -137,7 +137,7 @@ angular.module('nova.services', [])
   };
 
   var replyToClimber = function(climber) {
-    console.log(climber);
+
     var data = {
       notificationId: climber.id,
       reply: true
