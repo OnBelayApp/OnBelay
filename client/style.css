@@ -133,9 +133,6 @@ nav a:last-child {
 .switch {
   margin-bottom: 4rem;
 }
-/*.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #e74c3c !important;
-}*/
 .btn.outline {
     background: none;
     padding: 12px 22px;
