@@ -1,6 +1,6 @@
 angular.module('nova.services', [])
 
-.factory('Auth', function($http, $state, $window){
+.factory('Auth', function($http, $rootScope, $state, $window){
 
   var signin = function(user){
     return $http({
