@@ -17,7 +17,6 @@ angular.module('nova.main', [])
     $scope.getStatus = function() {
       Climbers.getStatus().then(function(res) {
         $scope.status = res.status;
-        console.log($scope.status);
       });
     }();
 
