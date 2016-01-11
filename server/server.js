@@ -6,12 +6,13 @@ var express = require('express'),
 
 var app = express();
 
+app.set('port', process.env.PORT || 3000);
+
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client'));
-
-if (process.env.NODE_ENV !== 'production') app.use(require('morgan')('dev'));
-
-app.set('port', process.env.PORT || 3000);
+if (process.env.NODE_ENV !== 'production') {
+  app.use(require('morgan')('dev'));
+}
 
 /* seeds the db with fake users for development */
 if (process.env.NODE_ENV === undefined) {
