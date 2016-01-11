@@ -1,15 +1,16 @@
 var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
-    //morgan = require('morgan'),
+    morgan = require('morgan'),
     controllers = require('./controllers'),
     User = require('./models').User;
 
 var app = express();
 
 app.use(bodyParser.json());
-//app.use(morgan('dev'));
 app.use(express.static(__dirname + '/../client'));
+
+if (process.env.NODE_ENV !== 'production') app.use(require('morgan')('dev'));
 
 app.set('port', process.env.PORT || 3000);
 
