@@ -34,11 +34,11 @@ angular.module('nova.services', [])
   };
 
   return {
-      signin: signin,
-      signup: signup,
-      signout: signout,
-      isAuth: isAuth
-    };
+    signin: signin,
+    signup: signup,
+    signout: signout,
+    isAuth: isAuth
+  };
 })
 
 .factory('Climbers', function($http){
@@ -52,7 +52,27 @@ angular.module('nova.services', [])
     });
   };
 
+  var getStatus = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/auth/user/flag'
+    }).then(function(resp) {
+      return resp.data;
+    });
+  };
+
+  var updateStatus = function() {
+    return $http({
+      method: 'PUT',
+      url: '/api/auth/user/flag'
+    }).then(function(resp) {
+      return resp.data;
+    });
+  };
+
   return {
+    getStatus: getStatus,
+    updateStatus: updateStatus,
     getClimbers: getClimbers
   };
 
@@ -92,7 +112,6 @@ angular.module('nova.services', [])
       method: 'GET',
       url: '/api/auth/user/notifications/unread'
     }).then(function(resp) {
-      console.log(resp.data);
       $rootScope.unread = resp.data;
     });
   };
