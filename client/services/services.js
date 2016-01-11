@@ -62,10 +62,12 @@ angular.module('nova.services', [])
   };
 
   var updateStatus = function(climber) {
+    console.log('climber', climber);
+    climber = climber || false;
     return $http({
       method: 'PUT',
       url: '/api/auth/user/flag',
-      data: {sender: climber}
+      data: {from: climber}
     }).then(function(resp) {
       return resp.data;
     });
@@ -139,12 +141,6 @@ angular.module('nova.services', [])
   };
 
   var replyToClimber = function(climber) {
-
-    var data = {
-      notificationId: climber.id,
-      reply: true
-    };
-
     return $http({
       method: 'PUT',
       url: '/api/auth/user/notifications/reply',

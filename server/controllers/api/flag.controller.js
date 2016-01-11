@@ -4,10 +4,9 @@ exports.climbFlag = function(req, res) {
   var authUser = req.decoded.user;
   var updateSender = false;
   var sender;
-
-  if (req.body.sender) {
+  if (req.body.from) {
     updateSender = true;
-    sender = req.body.sender.username;
+    sender = req.body.from.sender.username;
   }
   //find User
   User.findOne({ username: authUser }, function(err, user) {
@@ -23,6 +22,7 @@ exports.climbFlag = function(req, res) {
 
           if (updateSender) {
             User.findOne({ username: sender }, function(err, sender) {
+
               if (err) console.error(err);
 
               if (!sender) {
@@ -33,10 +33,7 @@ exports.climbFlag = function(req, res) {
 
                   if (err) console.error(err);
 
-                  res.json({ success: true, status: sender.climb });
-
                 });
-
               }
             });
             user.climb = false;
