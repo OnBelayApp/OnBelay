@@ -9,7 +9,6 @@ exports.updateProfile = function(req, res) {
     if (!user) {
       res.json({ success: false, reason: 'User not found' });
     } else {
-
       user.name.first = req.body.name.first;
       user.name.last = req.body.name.last;
       user.zipCode = req.body.zipCode;

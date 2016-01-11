@@ -25,7 +25,7 @@ angular.module('nova.auth', [])
       .then(function (token) {
         $window.localStorage.setItem('com.nova', token);
         $rootScope.hasAuth = true;
-        $state.go('main');
+        $state.go('update');
       })
       .catch(function (error) {
         console.error(error);
