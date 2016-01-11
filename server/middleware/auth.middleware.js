@@ -1,5 +1,11 @@
-var jwt = require('jsonwebtoken'),
-    credentials = require('../config/secrets');
+var jwt = require('jsonwebtoken');
+var tokenSecret;
+
+if (process.env.NODE_ENV === undefined) {
+  tokenSecret = require('../../config/secrets').authentication.tokenSecret;
+} else {
+  tokenSecret = process.env.TOKEN_SECRET;
+}
 
 module.exports = function(req, res, next) {
   var token = req.headers['x-access-token'];
@@ -8,7 +14,7 @@ module.exports = function(req, res, next) {
      return res.status(403).json({ success: false, reason: 'Invalid token' });
    }
 
-  jwt.verify(token, credentials.authentication.tokenSecret, function(err, decoded) {
+  jwt.verify(token, tokenSecret, function(err, decoded) {
     if (err) {
       console.log(err);
       return res.status(403).json({ success: false, reason: 'Invalid token' });
