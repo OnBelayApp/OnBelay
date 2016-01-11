@@ -29,7 +29,7 @@ module.exports = {
           }
         });
       } else {
-        res.end(401);
+        res.sendStatus(401);
       }
     });
   },
