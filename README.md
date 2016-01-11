@@ -4,7 +4,7 @@
 
 > OnBelay App is the easiest way to secure a partner for safe climbing.
 
-Visit the live demonstration [here](https://on-belay-app.herokuapp.com)
+Visit the live demonstration: https://on-belay-app.herokuapp.com/
 
 ![OnBelay Logo](/screenshots/onbelaylogo.png?raw=true "OnBelay Logo")
 
