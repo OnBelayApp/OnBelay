@@ -29,7 +29,8 @@ module.exports = {
           }
         });
       } else {
-        res.json({'success': false, 'reason': 'Username does not exist'});
+        res.status(401);
+        res.end();
       }
     });
   },
