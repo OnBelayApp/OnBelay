@@ -58,10 +58,10 @@ nav a.active-nav::after {
   content: '';
   display: block;
   position: absolute;
-  top: -5px;
-  left: -14px;
-  height: 4rem;
-  width: 4rem;
+  top: -7px;
+  left: -17px;
+  height: 4.5rem;
+  width: 4.5rem;
   background-color: #e74c3c;
   border-radius: 100%;
   z-index: -1;
