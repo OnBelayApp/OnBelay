@@ -4,10 +4,13 @@
 }
 
 header {
+  position: fixed;
+  width: 100%;
   padding: 2rem 2%;
   margin-bottom: 4rem;
   background-color: #3498db;
   box-shadow: 0 2px 4px rgba(20,20,20,0.3);
+  z-index: 2;
 }
 
 .logo {
@@ -79,6 +82,10 @@ nav a:last-child {
 #signin, #signup, #update{
   width: 400px;
   margin: 0 auto;
+}
+
+#content {
+  padding-top: 14rem;
 }
 
 .slideThree {
