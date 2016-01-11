@@ -20,6 +20,7 @@ angular.module('nova.auth', [])
       })
       .catch(function (error) {
         console.error(error);
+        $state.go('signin');
       });
   };
 
@@ -32,10 +33,9 @@ angular.module('nova.auth', [])
       })
       .catch(function (error) {
         console.error(error);
+        $state.go('signup');
       });
   };
-
-  $rootScope.unread;
 
   $scope.checkNotifications = function() {
     if (Auth.isAuth() && $state.name !== 'notifications') {
