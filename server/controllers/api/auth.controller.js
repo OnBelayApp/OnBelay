@@ -1,16 +1,16 @@
 var User = require('../../models').User,
     jwt = require('jsonwebtoken');
 
-var credentials;
+var tokenSecret;
 
 if (process.env.NODE_ENV === undefined) {
-  credentials = require('../../config/secrets');
+  tokenSecret = require('../../config/secrets').authentication.tokenSecret;
 } else {
-  credentials.authentication.tokenSecret = process.env.TOKEN_SECRET;
+  tokenSecret = process.env.TOKEN_SECRET;
 }
 
 var createToken = function(user) {
- return jwt.sign({ user: user.username }, credentials.authentication.tokenSecret, {
+ return jwt.sign({ user: user.username }, tokenSecret, {
    expiresIn: 86400
  });
 };
