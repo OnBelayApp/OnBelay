@@ -10,6 +10,9 @@ angular.module('nova.services', [])
     })
     .then(function(resp){
       return resp.data.token;
+    })
+    .catch(function(err) {
+      $state.go('signin');
     });
   };
 
@@ -21,6 +24,9 @@ angular.module('nova.services', [])
     })
     .then(function(resp){
       return resp.data.token;
+    })
+    .catch(function(err) {
+      $state.go('signup');
     });
   };
 
