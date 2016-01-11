@@ -8,7 +8,7 @@ angular.module('nova', [
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
- // $urlRouterProvider.otherwise("/signin");
+  $urlRouterProvider.otherwise("/signin");
   $stateProvider
     .state('main', {
       url: "/main",
