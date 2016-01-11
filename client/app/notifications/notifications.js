@@ -1,6 +1,6 @@
 angular.module('nova.notifications', [])
 
-  .controller('NotificationCtrl', function($scope, Notify, Update) {
+  .controller('NotificationCtrl', function($scope, Notify, Climbers) {
     $scope.notifications = [];
 
     $scope.getAllNotifications = function() {
@@ -24,12 +24,11 @@ angular.module('nova.notifications', [])
     }();
 
     $scope.climbOn = function(climber) {
-      console.log('climber', climber);
       Notify.replyToClimber(climber)
         .then(function(res) {
           console.log(res);
-        }).then(function() {
-          Update.flagOff()
+          // Turn flags off for both users
+          Climbers.updateStatus(climber)
             .then(function(res) {
               console.log(res);
             })

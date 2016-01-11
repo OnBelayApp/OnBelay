@@ -61,13 +61,16 @@ angular.module('nova.services', [])
     });
   };
 
-  var updateStatus = function() {
+  var updateStatus = function(climber) {
+    climber = climber || false;
     return $http({
       method: 'PUT',
-      url: '/api/auth/user/flag'
+      url: '/api/auth/user/flag',
+      data: {from: climber}
     }).then(function(resp) {
       return resp.data;
     });
+
   };
 
   return {
@@ -89,18 +92,8 @@ angular.module('nova.services', [])
     });
   };
 
-  var flagOff = function() {
-    return $http({
-      method: 'PUT',
-      url: '/api/auth/user/flag'
-    }).then(function(res) {
-      return res.data;
-    });
-  };
-
   return {
-    update: update,
-    flagOff: flagOff
+    update: update
   };
 
 })
@@ -147,12 +140,6 @@ angular.module('nova.services', [])
   };
 
   var replyToClimber = function(climber) {
-
-    var data = {
-      notificationId: climber.id,
-      reply: true
-    };
-
     return $http({
       method: 'PUT',
       url: '/api/auth/user/notifications/reply',
