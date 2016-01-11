@@ -16,7 +16,7 @@ app.set('port', process.env.PORT || 3000);
 mongoose.connect('mongodb://localhost/onbelay');
 
 /* seeds the db with fake users for development */
-if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined) {
+if (process.env.NODE_ENV === undefined) {
   require('../fakeUsers')();
 }
 
