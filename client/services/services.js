@@ -28,6 +28,7 @@ angular.module('nova.services', [])
   };
 
   var signout = function(){
+    $rootScope.hasAuth = false;
     $window.localStorage.removeItem('com.nova');
     $state.go('signin');
   };
