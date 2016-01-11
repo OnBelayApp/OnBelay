@@ -11,7 +11,7 @@ exports.climbFlag = function(req, res) {
     } else {
 
       switch (req.method) {
-        
+
         case 'PUT' :
           user.climb = !user.climb;
 
@@ -27,4 +27,4 @@ exports.climbFlag = function(req, res) {
       }
     }
   });
-}
+};
