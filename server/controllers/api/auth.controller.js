@@ -29,8 +29,7 @@ module.exports = {
           }
         });
       } else {
-        res.status(401);
-        res.end();
+        res.end(401);
       }
     });
   },
