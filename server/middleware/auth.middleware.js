@@ -2,7 +2,7 @@ var jwt = require('jsonwebtoken');
 var tokenSecret;
 
 if (process.env.NODE_ENV === undefined) {
-  tokenSecret = require('../../config/secrets').authentication.tokenSecret;
+  tokenSecret = require('../config/secrets').authentication.tokenSecret;
 } else {
   tokenSecret = process.env.TOKEN_SECRET;
 }
