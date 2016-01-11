@@ -1,7 +1,6 @@
 var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
-    morgan = require('morgan'),
     controllers = require('./controllers'),
     User = require('./models').User;
 
