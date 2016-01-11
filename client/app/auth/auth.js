@@ -2,20 +2,17 @@ angular.module('nova.auth', [])
 
 .controller('AuthController', function ($scope, $rootScope, $window, $state, Auth, Notify) {
   $scope.user = {};
-  $scope.hasAuth;
   $rootScope.unread = $rootScope.unread || 0;
 
   if (Auth.isAuth()) {
-    $scope.hasAuth = true;
-  } else {
-    $scope.hasAuth = false;
+    $rootScope.hasAuth = true;
   }
 
   $scope.signin = function () {
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.nova', token);
-        $scope.hasAuth = true;
+        $rootScope.hasAuth = true;
         $state.go('main');
       })
       .catch(function (error) {
@@ -27,7 +24,7 @@ angular.module('nova.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.nova', token);
-        $scope.hasAuth = true;
+        $rootScope.hasAuth = true;
         $state.go('main');
       })
       .catch(function (error) {
