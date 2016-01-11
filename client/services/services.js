@@ -61,13 +61,22 @@ angular.module('nova.services', [])
     });
   };
 
-  var updateStatus = function() {
+  var updateStatus = function(status, climber) {
+    var info = {flag: status};
+
+    // if climber is specified, update that climber 
+    if (climber) {
+      info.username = climber.sender.username;
+    }
+
     return $http({
       method: 'PUT',
-      url: '/api/auth/user/flag'
+      url: '/api/auth/user/flag',
+      data: info
     }).then(function(resp) {
       return resp.data;
     });
+
   };
 
   return {
@@ -89,18 +98,8 @@ angular.module('nova.services', [])
     });
   };
 
-  var flagOff = function() {
-    return $http({
-      method: 'PUT',
-      url: '/api/auth/user/flag'
-    }).then(function(res) {
-      return res.data;
-    });
-  };
-
   return {
-    update: update,
-    flagOff: flagOff
+    update: update
   };
 
 })

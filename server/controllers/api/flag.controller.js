@@ -1,9 +1,14 @@
 var User = require('../../models').User;
 
 exports.climbFlag = function(req, res) {
-  var authUser = req.decoded.user;
+  var updateUser = req.decoded.user;
+  var climbStatus = req.body.flag;
+
+  if (req.body.username) {
+    updateUser = req.body.username;
+  }
   //find User
-  User.findOne({ username: authUser }, function(err, user) {
+  User.findOne({ username: updateUser }, function(err, user) {
     if (err) console.error(err);
 
     if (!user) {
@@ -13,7 +18,7 @@ exports.climbFlag = function(req, res) {
       switch (req.method) {
 
         case 'PUT' :
-          user.climb = !user.climb;
+          user.climb = climbStatus;
 
           user.save(function(err, user) {
             if (err) console.error(err);
