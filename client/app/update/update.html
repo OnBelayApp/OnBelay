@@ -8,20 +8,20 @@
      <!-- <label for="name">Lastname</label> -->
      <input type='text' id="lastname" class="form-control" ng-model='user.name.last' placeholder="Last name..."><br>
      <!-- <label for="zip-code">ZIP</label> -->
-     <input type="text" id="zip-code" class="form-control" ng-model='user.zip' placeholder="ZIP code..."> <br>
+     <input type="text" id="zipCode" class="form-control" ng-model='user.zipCode' placeholder="ZIP code..."> <br>
 
       <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" ng-model="user.gender" id="male" value="male"> Male
+        <input type="radio" ng-model="user.gender" value="male"> Male
       </label>
       <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" ng-model="user.gender" id="female" value="female"> Female
+        <input type="radio" ng-model="user.gender" value="female"> Female
       </label>
 
       <br><br>
 
 
-     <label for="skill-level">Skill Level</label>
-     <select class="form-control" id="skill-level">
+     <label for="skillLevel">Skill Level</label>
+     <select class="form-control" ng-model="user.skillLevel" id="skillLevel">
       <option value="Beginner">Beginner</option>
       <option value="Intermediate">Intermediate</option>
       <option value="Expert">Expert</option>

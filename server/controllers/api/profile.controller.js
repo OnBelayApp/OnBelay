@@ -14,6 +14,7 @@ exports.updateProfile = function(req, res) {
       user.name.last = req.body.name.last;
       user.zipCode = req.body.zipCode;
       user.skillLevel = req.body.skillLevel;
+      user.gender = req.body.gender;
 
       user.save(function(err, user) {
         if (err) console.error(err);
