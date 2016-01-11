@@ -1,6 +1,13 @@
 var User = require('../../models').User,
-    jwt = require('jsonwebtoken'),
-    credentials = require('../../config/secrets');
+    jwt = require('jsonwebtoken');
+
+var credentials;
+
+if (process.env.NODE_ENV === undefined) {
+  credentials = require('../../config/secrets');
+} else {
+  credentials.authentication.tokenSecret = process.env.TOKEN_SECRET;
+}
 
 var createToken = function(user) {
  return jwt.sign({ user: user.username }, credentials.authentication.tokenSecret, {

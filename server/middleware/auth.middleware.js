@@ -1,5 +1,10 @@
-var jwt = require('jsonwebtoken'),
-    credentials = require('../config/secrets');
+var jwt = require('jsonwebtoken');
+
+if (process.env.NODE_ENV === undefined) {
+  credentials = require('../../config/secrets');
+} else {
+  credentials.authentication.tokenSecret = process.env.TOKEN_SECRET;
+}
 
 module.exports = function(req, res, next) {
   var token = req.headers['x-access-token'];
