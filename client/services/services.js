@@ -9,7 +9,6 @@ angular.module('nova.services', [])
       data: user
     })
     .then(function(resp){
-      console.log(resp);
       return resp.data.token;
     })
     .catch(function(err) {
