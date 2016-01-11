@@ -1,10 +1,32 @@
-<div id="container">
-  <ul>
-    <li class='notify' ng-repeat="climber in notifications">
-      <div>
-        {{climber.sender.username}}
+<div class="container">
+    <section class="switch">
+        <div class="slideThree">
+            <input type="checkbox" value="None" id="slideThree" name="check" checked ng-checked="status" ng-click="updateStatus()" />
+            <label for="slideThree"></label>
+        </div>
+    </section>
+    <div class="row">
+      <div class="[col-md-offset-1 col-md-4 ]" class='notify' ng-repeat="climber in notifications" >
+        <div class="[ info-card ]">
+          <img style="width: 100%" src="https://placehold.it/350x350" />
+          <div class="[ info-card-details ] animate">
+            <div class="[ info-card-header ]">
+              <h1> {{climber.sender.username}} </h1>
+              <h3> wants to climb</h3>
+            </div>
+            <div class="[ info-card-detail ]">
+              <!-- Description -->
+              <button class='climbOnBtn btn btn-primary outline' ng-click='climbOn(climber)'>Climb On</button>
+              <!-- <div class="social">
+                <a href="https://www.facebook.com/rem.mcintosh" class="[ social-icon facebook ] animate"><span class="fa fa-facebook"></span></a>
+                <a href="https://twitter.com/Mouse0270" class="[ social-icon twitter ] animate"><span class="fa fa-twitter"></span></a>
+                <a href="https://github.com/mouse0270" class="[ social-icon github ] animate"><span class="fa fa-github-alt"></span></a>
+                <a href="https://plus.google.com/u/0/115077481218689845626/posts" class="[ social-icon google-plus ] animate"><span class="fa fa-google-plus"></span></a>
+                <a href="www.linkedin.com/in/remcintosh/" class="[ social-icon linkedin ] animate"><span class="fa fa-linkedin"></span></a>
+              </div> -->
+            </div>
+          </div>
+        </div>
       </div>
-      <button class='climbOnBtn btn btn-primary outline' ng-click='climbOn(climber)'>Climb On</button>
-    </li>
-  </ul>
+    </div>
 </div>
