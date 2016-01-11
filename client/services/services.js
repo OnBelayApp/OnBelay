@@ -62,7 +62,6 @@ angular.module('nova.services', [])
   };
 
   var updateStatus = function(climber) {
-    console.log('climber', climber);
     climber = climber || false;
     return $http({
       method: 'PUT',

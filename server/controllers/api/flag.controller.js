@@ -4,6 +4,7 @@ exports.climbFlag = function(req, res) {
   var authUser = req.decoded.user;
   var updateSender = false;
   var sender;
+
   if (req.body.from) {
     updateSender = true;
     sender = req.body.from.sender.username;
