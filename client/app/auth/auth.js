@@ -37,8 +37,6 @@ angular.module('nova.auth', [])
       });
   };
 
-  $rootScope.unread;
-
   $scope.checkNotifications = function() {
     if (Auth.isAuth() && $state.name !== 'notifications') {
       Notify.checkNotifications();
