@@ -137,10 +137,16 @@ angular.module('nova.services', [])
   };
 
   var replyToClimber = function(climber) {
+    console.log(climber);
+    var data = {
+      notificationId: climber.id,
+      reply: true
+    };
+
     return $http({
       method: 'PUT',
       url: '/api/auth/user/notifications/reply',
-      data: climber
+      data: data
     }).then(function(res) {
       return res.data;
     });
