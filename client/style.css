@@ -133,3 +133,20 @@ nav a:last-child {
 .switch {
   margin-bottom: 4rem;
 }
+.btn.outline {
+    background: none;
+    padding: 12px 22px;
+}
+.btn-primary.outline {
+    border: 2px solid #3498db;
+    color: #3498db;
+}
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+    border-color: #e74c3c;
+    color: #e74c3c;
+    box-shadow: none;
+}
