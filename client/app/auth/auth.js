@@ -3,6 +3,7 @@ angular.module('nova.auth', [])
 .controller('AuthController', function ($scope, $rootScope, $window, $state, Auth, Notify) {
   $scope.user = {};
   $scope.hasAuth;
+  $rootScope.unread = $rootScope.unread || 0;
 
   if (Auth.isAuth()) {
     $scope.hasAuth = true;
