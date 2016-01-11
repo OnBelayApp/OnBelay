@@ -25,7 +25,7 @@ module.exports = {
             var userToken = createToken(user);
             res.json({'success': true, 'token': userToken, 'status': user.climb});
           } else {
-            res.json({'success': false, 'reason': 'Password incorrect'});
+            res.sendStatus(401);
           }
         });
       } else {
