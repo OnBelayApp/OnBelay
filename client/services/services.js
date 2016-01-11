@@ -61,18 +61,11 @@ angular.module('nova.services', [])
     });
   };
 
-  var updateStatus = function(status, climber) {
-    var info = {flag: status};
-
-    // if climber is specified, update that climber 
-    if (climber) {
-      info.username = climber.sender.username;
-    }
-
+  var updateStatus = function(climber) {
     return $http({
       method: 'PUT',
       url: '/api/auth/user/flag',
-      data: info
+      data: {sender: climber}
     }).then(function(resp) {
       return resp.data;
     });

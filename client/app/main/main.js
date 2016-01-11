@@ -21,7 +21,7 @@ angular.module('nova.main', [])
     }();
 
     $scope.updateStatus = function() {
-      Climbers.updateStatus($scope.status).then(function(res) {
+      Climbers.updateStatus().then(function(res) {
         console.log(res);
       });
     };
