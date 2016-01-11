@@ -59,7 +59,7 @@ nav a.active-nav::after {
   display: block;
   position: absolute;
   top: -5px;
-  left: -15px;
+  left: -14px;
   height: 4rem;
   width: 4rem;
   background-color: #e74c3c;
