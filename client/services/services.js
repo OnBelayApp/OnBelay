@@ -119,7 +119,7 @@ angular.module('nova.services', [])
       method: 'GET',
       url: '/api/auth/user/notifications/unread'
     }).then(function(resp) {
-      $rootScope.unread = resp.data;
+      return resp.data;
     });
   };
 
