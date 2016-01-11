@@ -2,7 +2,7 @@
 
 > Have you ever wanted to go rock climbing but had nobody to partner with? OnBelay connects rock climbers because climbing alone is never an option. 'On belay?' is how the climber asks the partner (belayer) if the rope is secure and it is safe to start climbing. Once secure, the belayer responds with 'belay on'.
 
-> BelayOn App is the easiest way to secure a partner for safe climbing.
+> OnBelay App is the easiest way to secure a partner for safe climbing.
 
 ![OnBelay Logo](/screenshots/onbelaylogo.png?raw=true "OnBelay Logo")
 
@@ -17,17 +17,17 @@
 
 ## Usage
 
-OnBelay is a web application that requires users to create an account. To use OnBelay, all you have to do is signin. You will be able to view all climbers who are looking for a climbing partner. Toggle the switch to indicate that you are ready to climb. Click the 'Climb On' button to notify the user that you would like to meet up at a local gym. Check your notifications to view those interested in climbing with you.
+OnBelay App is a web application that requires users to create an account. To use OnBelay, all you have to do is signin. You will be able to view all climbers who are looking for a climbing partner. Toggle the switch to indicate that you are ready to climb. Click the 'Climb On' button to notify the user that you would like to meet up at a local indoor climbing gym or outdoor location. Check your notifications to view those interested in climbing with you.
 
 ### Website
 
-The website runs on a Node.js server and on the backend with a MongoDB database. On the front end it uses AngularJs and Twitter bootstrap for a responsive design. Here is what the website home page looks like.
+The website runs on a Node.js server and on the backend with a MongoDB database. On the front end it uses AngularJs and Twitter bootstrap for a responsive design. Here is what the website main page looks like.
 
 ![OnBelay Website](/screenshots/signin.png?raw=true "OnBelay Signin")
 
 Here is what the user sees when they login to their account on OnBelay. This shows all the climbers who have switched on their 'Climb' button.
 
-![OnBelay Homepage](/screenshots/mainpage.png?raw=true "OnBelay Main Page")
+![OnBelay Mainpage](/screenshots/mainpage.png?raw=true "OnBelay Main Page")
 
 ## Requirements
 
