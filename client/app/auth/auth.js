@@ -20,6 +20,7 @@ angular.module('nova.auth', [])
       })
       .catch(function (error) {
         console.error(error);
+        $state.go('signin');
       });
   };
 
@@ -32,6 +33,7 @@ angular.module('nova.auth', [])
       })
       .catch(function (error) {
         console.error(error);
+        $state.go('signup');
       });
   };
 
