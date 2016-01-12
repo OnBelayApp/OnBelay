@@ -122,7 +122,7 @@ function checkUnread(req, res) {
     if (err) console.error(err);
 
     if (!user) {
-      res.json({ success: false, reason: 'User not found' });
+      res.sendStatus(401);
     } else {
       Notification.find({ _id: { $in: user.notifications.incoming }}, function(err, notifications) {
         if (err) console.error(err);
